@@ -1,3 +1,5 @@
+// This module contains the todolist and project objects
+
 export class ToDoList {
     constructor() {
         this.list = [];

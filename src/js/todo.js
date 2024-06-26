@@ -1,3 +1,5 @@
+// This module contains the todo object
+
 export class Todo {
     constructor(title, description, dueDate, priority) {
         this._title = title;

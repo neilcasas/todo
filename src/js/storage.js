@@ -1,0 +1,1 @@
+// This module contains the logic for storing the objects within localStorage
