@@ -4,7 +4,7 @@ import { ToDoList } from "./todoList";
 const mainElement = document.querySelector('main');
 
 // Add todo button component
-export const addTodoButton = () => {
+const addTodoButton = () => {
     const button = document.createElement('button');
     button.textContent = 'Add Todo';
     button.setAttribute('class', 'btn-primary');
@@ -14,8 +14,7 @@ export const addTodoButton = () => {
 }
 
 // Add todo modal component
-export const addTodoModal = () => {
-    console.log('clicked addtodobutton')
+const addTodoModal = (todolist) => {
     const modalID = 'add-todo-modal';
     const modalMainDiv = document.createElement('div');
     modalMainDiv.setAttribute('class', 'modal fade');
@@ -172,6 +171,9 @@ export const addTodoModal = () => {
         saveButton.setAttribute('type', 'submit');
         saveButton.textContent = 'Save changes';
 
+        // Add saveTodo function to saveButton
+        saveButton.addEventListener('click', () => saveTodo(todolist));
+
         modalFooterDiv.appendChild(closeButton);
         modalFooterDiv.appendChild(saveButton);
 
@@ -180,18 +182,23 @@ export const addTodoModal = () => {
 
 
 }
-// take all values from form
-// create new todo object
-// place todo object in todolist array
-// jsonify todolist array and place inside local storage
-// include form validation
-function saveTodo(todolist) {
-    const title = document.getElementById('todo-name').value;
-    const description = document.getElementById('todo-description').value;
-    const date = document.getElementById('todo-date').value;
-    const priority = document.getElementById('todo-priority').value;
+// TODO: include form validation
 
+function saveTodo(todolist) {
+    // Take all values from form
+    const title = document.getElementById('todo-title').value || null;
+    const description = document.getElementById('todo-description').value || null;
+    const date = document.getElementById('todo-date').value || null;
+    const priority = document.getElementById('todo-priority').value || null;
+
+    // Create new todo object
     const newTodo = new Todo(title, description, date, priority);
 
-    todolist.addTodo(newTodo);
+    // Place todo object in todolist array
+    todolist.push(newTodo);
+
+    // JSONify todolist array and place inside local storage
+    localStorage.setItem('todolist', JSON.stringify(todolist));
 }
+
+export { addTodoButton, addTodoModal }
