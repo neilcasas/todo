@@ -1,3 +1,6 @@
+import { Todo } from "./todo.js";
+import { ToDoList } from "./todoList";
+
 const mainElement = document.querySelector('main');
 
 // Add todo button component
@@ -69,20 +72,20 @@ export const addTodoModal = () => {
         modalBodyDiv.classList.add('modal-body');
 
         // Define and immediately invoke form input functions
-        (function nameInput() {
+        (function titleInput() {
             const formDiv = document.createElement('div');
             formDiv.classList.add('mb-3');
 
             const label = document.createElement('label');
             label.classList.add('form-label');
             label.textContent = 'What are you planning to do?'
-            label.setAttribute('for', 'todo-name');
+            label.setAttribute('for', 'todo-title');
             formDiv.appendChild(label);
 
             const input = document.createElement('input');
             input.classList.add('form-control');
             input.setAttribute('type', 'text');
-            input.setAttribute('id', 'todo-name');
+            input.id = 'todo-title';
             input.setAttribute('placeholder', 'e.g. Walk my dogs');
             formDiv.appendChild(input);
 
@@ -101,7 +104,7 @@ export const addTodoModal = () => {
 
             const input = document.createElement('textarea');
             input.classList.add('form-control');
-            input.setAttribute('id', 'todo-description');
+            input.id = 'todo-description';
             input.setAttribute('placeholder', 'e.g. Take Sadie and Abby out for a walk');
             formDiv.appendChild(input);
 
@@ -138,7 +141,7 @@ export const addTodoModal = () => {
             formDiv.appendChild(label);
 
             const selectElement = document.createElement('select');
-            selectElement.id = 'priority';
+            selectElement.id = 'todo-priority';
             selectElement.classList.add('form-select');
             selectElement.innerHTML = `<option selected disabled>Select a priority</option>
             <option value="high">High</option>
@@ -175,4 +178,20 @@ export const addTodoModal = () => {
         return modalFooterDiv;
     }
 
+
+}
+// take all values from form
+// create new todo object
+// place todo object in todolist array
+// jsonify todolist array and place inside local storage
+// include form validation
+function saveTodo(todolist) {
+    const title = document.getElementById('todo-name').value;
+    const description = document.getElementById('todo-description').value;
+    const date = document.getElementById('todo-date').value;
+    const priority = document.getElementById('todo-priority').value;
+
+    const newTodo = new Todo(title, description, date, priority);
+
+    todolist.addTodo(newTodo);
 }
