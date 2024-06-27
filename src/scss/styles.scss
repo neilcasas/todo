@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+textarea {
+    resize: none;
+}
+
 .todo {
     .todo-body {
         display: flex;

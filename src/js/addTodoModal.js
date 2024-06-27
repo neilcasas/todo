@@ -83,7 +83,7 @@ export const addTodoModal = () => {
             input.classList.add('form-control');
             input.setAttribute('type', 'text');
             input.setAttribute('id', 'todo-name');
-            input.setAttribute('placeholder', 'e.g. walk my dog');
+            input.setAttribute('placeholder', 'e.g. Walk my dogs');
             formDiv.appendChild(input);
 
             modalBodyDiv.appendChild(formDiv);
@@ -99,9 +99,10 @@ export const addTodoModal = () => {
             label.setAttribute('for', 'todo-description');
             formDiv.appendChild(label);
 
-            const input = document.createElement('textarea'); // Corrected 'text-area' to 'textarea'
+            const input = document.createElement('textarea');
             input.classList.add('form-control');
             input.setAttribute('id', 'todo-description');
+            input.setAttribute('placeholder', 'e.g. Take Sadie and Abby out for a walk');
             formDiv.appendChild(input);
 
             modalBodyDiv.appendChild(formDiv);
