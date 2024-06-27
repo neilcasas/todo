@@ -11,7 +11,7 @@ export const todoComponent = (todo) => {
     todoBody.appendChild(todoCheck);
 
     const todoTitle = document.createElement('div');
-    todoTitle.textContent = todo.getTitle();
+    todoTitle.textContent = todo._title;
     todoBody.appendChild(todoTitle);
 
     todoElement.appendChild(todoBody);

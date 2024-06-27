@@ -1,5 +1,6 @@
 import { Todo } from "./todo.js";
 import { ToDoList } from "./todoList";
+import { todoListComponent } from "./todoListComponent.js";
 
 const mainElement = document.querySelector('main');
 
@@ -199,6 +200,7 @@ function saveTodo(todolist) {
 
     // JSONify todolist array and place inside local storage
     localStorage.setItem('todolist', JSON.stringify(todolist));
+    todoListComponent(todolist);
 }
 
 export { addTodoButton, addTodoModal }
