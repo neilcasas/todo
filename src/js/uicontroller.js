@@ -3,18 +3,17 @@ import { ToDoList, Project } from "./todolist";
 import { Todo } from "./todo";
 
 
-const bodyElement = document.querySelector('body');
-const contentElement = document.querySelector('#main-container')
-
+const mainElement = document.querySelector('main');
 
 // Navbar component
 const navbar = () => {
+    const headerElement = document.querySelector('header');
     const nav = document.createElement('nav');
     nav.classList.add('navbar');
     const text = document.createElement('h1');
     text.textContent = 'Today';
     nav.appendChild(text);
-    return nav;
+    headerElement.appendChild(nav);
 }
 
 // Todo component
@@ -46,8 +45,7 @@ const todoListComponent = (todoList) => {
         let todoElement = todoComponent(todo);
         list.appendChild(todoElement);
     }
-
-    return list;
+    mainElement.appendChild(list);
 }
 
 // View all todos within a project
@@ -59,8 +57,7 @@ const todoListComponent = (todoList) => {
 
 
 export default function loadPage() {
-    const nav = navbar();
-    bodyElement.appendChild(nav)
+    navbar();
 
     let todo1 = new Todo('study webdev', 'study react', 'today', 'important');
     let todo2 = new Todo('bake cookies', `bake mom's recipe`, 'today', 'not that important');
@@ -69,7 +66,6 @@ export default function loadPage() {
     todoList.addTodo(todo1);
     todoList.addTodo(todo2);
 
-    const listComponent = todoListComponent(todoList);
+    todoListComponent(todoList);
 
-    contentElement.appendChild(listComponent);
 }
