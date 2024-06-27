@@ -3,89 +3,10 @@ import { ToDoList, Project } from "./todolist";
 import { Todo } from "./todo";
 import { navbar } from './navbar.js';
 import { todoListComponent } from './todoListComponent.js';
+import { addTodoButton, addTodoModal } from "./addtodomodal.js";
 
 const mainElement = document.querySelector('main');
 
-// Add todo button component
-const addTodoButton = () => {
-    const button = document.createElement('button');
-    button.textContent = 'Add Todo';
-    button.setAttribute('class', 'btn-primary');
-    button.setAttribute('data-bs-toggle', 'modal');
-    button.setAttribute('data-bs-target', '#add-todo-modal');
-    mainElement.appendChild(button);
-}
-
-// Add todo modal component
-const addTodoModal = () => {
-    console.log('clicked addtodobutton')
-    const modalID = 'add-todo-modal';
-    const modalMainDiv = document.createElement('div');
-    modalMainDiv.setAttribute('class', 'modal fade');
-    modalMainDiv.setAttribute('id', `${modalID}`);
-
-    const modalDialogDiv = document.createElement('div');
-    modalDialogDiv.setAttribute('class', 'modal-dialog');
-
-    const modalContentDiv = document.createElement('div');
-    modalContentDiv.setAttribute('class', 'modal-content');
-
-    modalContentDiv.appendChild(createModalHeaderDiv());
-    modalContentDiv.appendChild(createModalBodyDiv());
-    modalContentDiv.appendChild(createModalFooterDiv());
-
-    modalDialogDiv.appendChild(modalContentDiv);
-    modalMainDiv.appendChild(modalDialogDiv);
-
-
-    function createModalHeaderDiv() {
-        const modalHeaderDiv = document.createElement('div');
-        modalHeaderDiv.classList.add('modal-header');
-
-        const modalTitle = document.createElement('h1');
-        modalTitle.setAttribute('class', 'modal-title fs-5');
-        modalTitle.textContent = 'Add Todo';
-
-        const modalCloseButton = document.createElement('button');
-        modalCloseButton.classList.add('btn-close');
-        modalCloseButton.setAttribute('data-bs-dismiss', 'modal');
-
-        modalHeaderDiv.appendChild(modalTitle);
-        modalHeaderDiv.appendChild(modalCloseButton);
-
-        return modalHeaderDiv;
-    }
-
-    function createModalBodyDiv() {
-        const modalBodyDiv = document.createElement('div');
-        modalBodyDiv.classList.add('modal-body');
-        modalBodyDiv.textContent = 'test';
-        return modalBodyDiv;
-    }
-
-    function createModalFooterDiv() {
-        const modalFooterDiv = document.createElement('div');
-        modalFooterDiv.classList.add('modal-footer');
-
-        const closeButton = document.createElement('button');
-        closeButton.classList.add('btn');
-        closeButton.classList.add('btn-secondary');
-        closeButton.setAttribute('data-bs-dismiss', 'modal');
-        closeButton.textContent = 'Close';
-
-
-        const saveButton = document.createElement('button');
-        saveButton.classList.add('btn');
-        saveButton.classList.add('btn-primary');
-        saveButton.textContent = 'Save changes';
-
-        modalFooterDiv.appendChild(closeButton);
-        modalFooterDiv.appendChild(saveButton);
-
-        return modalFooterDiv;
-    }
-    mainElement.appendChild(modalMainDiv);
-}
 
 // View all todos within a project
 
@@ -93,7 +14,6 @@ const addTodoModal = () => {
 // View all projects
 // Expand a todo
 // Delete a todo
-
 
 export default function loadPage() {
     navbar();
