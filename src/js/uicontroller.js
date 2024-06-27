@@ -1,50 +1,42 @@
 // This module contains the logic for displaying and manipulating DOM elements
 import { ToDoList, Project } from "./todolist";
 import { Todo } from "./todo";
-
+import { navbar } from './navbar.js';
+import { todoListComponent } from './todoListComponent.js';
 
 const mainElement = document.querySelector('main');
 
-// Navbar component
-const navbar = () => {
-    const headerElement = document.querySelector('header');
-    const nav = document.createElement('nav');
-    nav.classList.add('navbar');
-    const text = document.createElement('h1');
-    text.textContent = 'Today';
-    nav.appendChild(text);
-    headerElement.appendChild(nav);
+// Add todo button component
+const addTodoButton = () => {
+    const button = document.createElement('button');
+    button.textContent('Add Todo');
+    button.setAttribute('class', 'btn-primary');
 }
 
-// Todo component
-const todoComponent = (todo) => {
-    const todoElement = document.createElement('div');
-    todoElement.setAttribute('class', 'todo');
+// Add todo modal component
+const addTodoModal = () => {
+    const modalMainDiv = document.createElement('div');
+    modalMainDiv.setAttribute('class', 'modal fade');
+    modalMainDiv.setAttribute('id', 'add-todo-modal');
 
-    const todoBody = document.createElement('div');
-    todoBody.setAttribute('class', 'todo-body');
+    const modalDialogDiv = document.createElement('div');
+    modalDialogDiv.setAttribute('class', 'modal-dialog');
 
-    const todoCheck = document.createElement('input');
-    todoCheck.setAttribute('type', 'checkbox');
-    todoBody.appendChild(todoCheck);
+    const modalContentDiv = document.createElement('div');
+    modalContentDiv.setAttribute('class', 'modal-content');
 
-    const todoTitle = document.createElement('div');
-    todoTitle.textContent = todo.getTitle();
-    todoBody.appendChild(todoTitle);
+    const modalHeaderDiv = document.createElement('div');
+    modalHeaderDiv.setAttribute('modal-header');
 
-    todoElement.appendChild(todoBody);
-    return todoElement;
-}
+    const modalTitle = document.createElement('h1');
+    modalTitle.setAttribute('class', 'modal-title fs-5');
 
-// Todo list component
-const todoListComponent = (todoList) => {
-    const list = document.createElement('div');
-    list.setAttribute('class', 'todo-list');
-    for (let todo of todoList) {
-        let todoElement = todoComponent(todo);
-        list.appendChild(todoElement);
-    }
-    mainElement.appendChild(list);
+    const modalCloseButton = document.createElement('button');
+    modalCloseButton.setAttribute('class', 'btn-close');
+    modalCloseButton.setAttribute('data-bs-dismiss', 'add-todo-modal');
+
+    modalHeaderDiv.appendChild(modalTitle);
+    modalHeaderDiv.appendChild(modalCloseButton);
 }
 
 // View all todos within a project

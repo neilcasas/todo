@@ -1,5 +1,6 @@
-import '../scss/styles.scss'
-import loadPage from './uicontroller.js'
+import '../scss/styles.scss';
+import * as bootstrap from 'bootstrap';
+import loadPage from './uicontroller.js';
 
 
 loadPage();
