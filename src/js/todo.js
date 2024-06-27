@@ -6,6 +6,7 @@ export class Todo {
         this._description = description;
         this._dueDate = dueDate;
         this._priority = priority;
+        this._isDone = false;
     }
 
     getTitle() { return this._title; }
@@ -17,4 +18,5 @@ export class Todo {
     setDescription(description) { this._description = description; }
     setDueDate(dueDate) { this._dueDate = dueDate; }
     setPriority(priority) { this._priority = priority; }
+    setIsDone() { this._isDone = !this._isDone };
 }

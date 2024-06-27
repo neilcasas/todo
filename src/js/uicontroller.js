@@ -19,20 +19,18 @@ const navbar = () => {
 // Todo component
 const todoComponent = (todo) => {
     const todoElement = document.createElement('div');
-    todoElement.classList.add('card');
+    todoElement.setAttribute('class', 'todo');
 
     const todoBody = document.createElement('div');
-    todoBody.classList.add('card-body');
+    todoBody.setAttribute('class', 'todo-body');
+
+    const todoCheck = document.createElement('input');
+    todoCheck.setAttribute('type', 'checkbox');
+    todoBody.appendChild(todoCheck);
 
     const todoTitle = document.createElement('div');
-    todoTitle.classList.add('card-title');
     todoTitle.textContent = todo.getTitle();
     todoBody.appendChild(todoTitle);
-
-    const todoDescription = document.createElement('div');
-    todoDescription.textContent = todo.getDescription();
-    todoDescription.setAttribute('class', 'card-body');
-    todoBody.appendChild(todoDescription);
 
     todoElement.appendChild(todoBody);
     return todoElement;
@@ -41,6 +39,7 @@ const todoComponent = (todo) => {
 // Todo list component
 const todoListComponent = (todoList) => {
     const list = document.createElement('div');
+    list.setAttribute('class', 'todo-list');
     for (let todo of todoList) {
         let todoElement = todoComponent(todo);
         list.appendChild(todoElement);
@@ -67,5 +66,4 @@ export default function loadPage() {
     todoList.addTodo(todo2);
 
     todoListComponent(todoList);
-
 }
