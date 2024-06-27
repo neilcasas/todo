@@ -11,7 +11,8 @@ const addTodoButton = () => {
     const button = document.createElement('button');
     button.textContent = 'Add Todo';
     button.setAttribute('class', 'btn-primary');
-    button.setAttribute('data-bs-toggle', 'add-todo-modal');
+    button.setAttribute('data-bs-toggle', 'modal');
+    button.setAttribute('data-bs-target', '#add-todo-modal');
     mainElement.appendChild(button);
 }
 
@@ -43,10 +44,11 @@ const addTodoModal = () => {
 
         const modalTitle = document.createElement('h1');
         modalTitle.setAttribute('class', 'modal-title fs-5');
+        modalTitle.textContent = 'Add Todo';
 
         const modalCloseButton = document.createElement('button');
         modalCloseButton.classList.add('btn-close');
-        modalCloseButton.setAttribute('data-bs-dismiss', `${modalID}`);
+        modalCloseButton.setAttribute('data-bs-dismiss', 'modal');
 
         modalHeaderDiv.appendChild(modalTitle);
         modalHeaderDiv.appendChild(modalCloseButton);
@@ -57,23 +59,25 @@ const addTodoModal = () => {
     function createModalBodyDiv() {
         const modalBodyDiv = document.createElement('div');
         modalBodyDiv.classList.add('modal-body');
+        modalBodyDiv.textContent = 'test';
         return modalBodyDiv;
     }
 
     function createModalFooterDiv() {
         const modalFooterDiv = document.createElement('div');
+        modalFooterDiv.classList.add('modal-footer');
 
         const closeButton = document.createElement('button');
         closeButton.classList.add('btn');
         closeButton.classList.add('btn-secondary');
-        closeButton.setAttribute('data-bs-dismiss', `${modalID}`);
+        closeButton.setAttribute('data-bs-dismiss', 'modal');
         closeButton.textContent = 'Close';
 
 
         const saveButton = document.createElement('button');
         saveButton.classList.add('btn');
         saveButton.classList.add('btn-primary');
-        saveButton.textContent = 'Close';
+        saveButton.textContent = 'Save changes';
 
         modalFooterDiv.appendChild(closeButton);
         modalFooterDiv.appendChild(saveButton);
