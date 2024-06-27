@@ -200,7 +200,7 @@ function saveTodo(todolist) {
 
     // JSONify todolist array and place inside local storage
     localStorage.setItem('todolist', JSON.stringify(todolist));
-    todoListComponent(todolist);
+    todoListComponent(todolist); // this causes bugs because im just adding it over and over again
 }
 
 export { addTodoButton, addTodoModal }
