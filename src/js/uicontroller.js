@@ -30,10 +30,24 @@ const todoComponent = (todo) => {
     todoTitle.textContent = todo.getTitle();
     todoBody.appendChild(todoTitle);
 
-    const todoDescription = todo.getDescription();
-    todoBody.textContent = todoDescription;
+    const todoDescription = document.createElement('div');
+    todoDescription.textContent = todo.getDescription();
+    todoDescription.setAttribute('class', 'card-body');
+    todoBody.appendChild(todoDescription);
 
+    todoElement.appendChild(todoBody);
     return todoElement;
+}
+
+// Todo list component
+const todoListComponent = (todoList) => {
+    const list = document.createElement('div');
+    for (let todo of todoList) {
+        let todoElement = todoComponent(todo);
+        list.appendChild(todoElement);
+    }
+
+    return list;
 }
 
 // View all todos within a project
@@ -45,5 +59,17 @@ const todoComponent = (todo) => {
 
 
 export default function loadPage() {
-    bodyElement.appendChild(navbar())
+    const nav = navbar();
+    bodyElement.appendChild(nav)
+
+    let todo1 = new Todo('study webdev', 'study react', 'today', 'important');
+    let todo2 = new Todo('bake cookies', `bake mom's recipe`, 'today', 'not that important');
+
+    const todoList = new ToDoList();
+    todoList.addTodo(todo1);
+    todoList.addTodo(todo2);
+
+    const listComponent = todoListComponent(todoList);
+
+    contentElement.appendChild(listComponent);
 }

@@ -16,6 +16,20 @@ export class ToDoList {
     getTodos() {
         return this.list;
     }
+
+    [Symbol.iterator]() {
+        let index = 0;
+        let list = this.list;
+        return {
+            next: () => {
+                if (index < list.length) {
+                    return { value: list[index++], done: false };
+                } else {
+                    return { done: true };
+                }
+            }
+        };
+    }
 }
 
 export class Project extends ToDoList {
