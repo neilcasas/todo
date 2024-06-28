@@ -27,6 +27,7 @@ const createAddTodoModal = (todolist) => {
 
     const modalDialogDiv = document.createElement('div');
     modalDialogDiv.classList.add('modal-dialog');
+    modalDialogDiv.classList.add('modal-dialog-centered');
 
     const modalContentDiv = document.createElement('div');
     modalContentDiv.classList.add('modal-content');
@@ -194,7 +195,8 @@ function saveTodo(todolist) {
     const priority = document.getElementById('todo-priority').value || null;
 
     // Create new todo object
-    const newTodo = new Todo(title, description, date, priority);
+    let todoCounter = todolist.length || 0;
+    const newTodo = new Todo(todoCounter++, title, description, date, priority);
 
     // Place todo object in todolist array
     todolist.push(newTodo);

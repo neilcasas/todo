@@ -5,10 +5,38 @@ export const todoComponent = (todo) => {
     todoElement.innerHTML = `
     <div class="todo-body card-body">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">${todo._title}</label>
+            <input class="form-check-input" type="checkbox" value="" id="${todo._id}">
+            <label class="form-check-label" for="${todo._id}">${todo._title}</label>
         </div>
     </div>
     `;
+    todoElement.setAttribute('data-bs-toggle', 'modal');
+    todoElement.setAttribute('data-bs-target', `#${todo._id}-modal`)
+
+    todoElement.appendChild(todoModal(todo));
     return todoElement;
+}
+
+const todoModal = (todo) => { 
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'modal fade');
+    modal.setAttribute('id',`${todo._id}-modal`);
+    modal.innerHTML = `
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">${todo._title}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>${todo._description}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Finished Todo</button>
+                </div>
+            </div>
+        </div>
+    `;
+    return modal;
 }
