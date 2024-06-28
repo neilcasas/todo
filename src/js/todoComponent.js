@@ -1,19 +1,14 @@
 // Todo component
 export const todoComponent = (todo) => {
     const todoElement = document.createElement('div');
-    todoElement.classList.add('todo');
-
-    const todoBody = document.createElement('div');
-    todoBody.classList.add('todo-body');
-
-    const todoCheck = document.createElement('input');
-    todoCheck.setAttribute('type', 'checkbox');
-    todoBody.appendChild(todoCheck);
-
-    const todoTitle = document.createElement('div');
-    todoTitle.textContent = todo._title;
-    todoBody.appendChild(todoTitle);
-
-    todoElement.appendChild(todoBody);
+    todoElement.classList.add('todo', 'card');
+    todoElement.innerHTML = `
+    <div class="todo-body card-body">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">${todo._title}</label>
+        </div>
+    </div>
+    `;
     return todoElement;
 }
