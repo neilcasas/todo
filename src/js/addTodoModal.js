@@ -5,9 +5,9 @@ import loadPage from "./uicontroller.js";
 const createAddTodoButton = () => {
     const button = document.createElement('button');
 
-    button.textContent = 'Add Todo';
+    button.textContent = '+';
     
-    button.setAttribute('class', 'btn-primary');
+    button.setAttribute('class', 'btn btn-primary');
 
     button.setAttribute('data-bs-toggle', 'modal');
     button.setAttribute('data-bs-target', '#add-todo-modal');

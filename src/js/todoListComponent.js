@@ -10,3 +10,14 @@ export const createTodoListComponent = (todoList) => {
     }
     return list;
 }
+
+/* TODO: Create a function that the DOM element that contains the todo list, 
+which adds checked todos to a "Complete" section. Optional: Add a navbar that 
+organizes the todos per timeframe*/
+
+export const todoListContentComponent = () => {
+    const mainDiv = document.createElement('div');
+    
+    
+    const headerDiv = document.createElement('div');
+}
