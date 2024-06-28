@@ -1,11 +1,10 @@
 // This module contains the logic for displaying and manipulating DOM` elements
-import { ToDoList, Project } from "./todoList.js";
+import { TodoList, Project } from "./todoList.js";
 import { Todo } from "./todo";
 import { navbar } from './navbar.js';
-import { todoListComponent } from './todoListComponent.js';
-import { addTodoButton, addTodoModal } from "./addTodoModal.js";
+import { createTodoListComponent } from "./todoListComponent.js";
+import { createAddTodoButton, createAddTodoModal } from "./addTodoModal.js";
 
-const mainElement = document.querySelector('main');
 
 
 // View all todos within a project
@@ -16,12 +15,17 @@ const mainElement = document.querySelector('main');
 // Delete a todo
 
 export default function loadPage() {
+    const contentElement = document.querySelector('#content');
     // everytime you load the page, it creates an array of todos from localstorage, parse the json and then displays it
     const todoList = JSON.parse(localStorage.getItem('todolist')) || [];
-    todoListComponent(todoList);
+    const todoListComponent = createTodoListComponent(todoList);
     // navbar();
-    addTodoButton();
-    addTodoModal(todoList);
+    const addTodoButton = createAddTodoButton();
+    const addTodoModal = createAddTodoModal(todoList);
+
+    contentElement.appendChild(todoListComponent);
+    contentElement.appendChild(addTodoButton);
+    contentElement.appendChild(addTodoModal);
 }
 
 // create function for loading main todopage

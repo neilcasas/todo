@@ -1,21 +1,24 @@
 import { Todo } from "./todo.js";
-import { ToDoList } from "./todoList";
-import { todoListComponent } from "./todoListComponent.js";
+import { TodoList } from "./todoList";
+import { createTodoListComponent } from "./todoListComponent.js";
 
-const contentElement = document.querySelector('#content');
 
 // Add todo button component
-const addTodoButton = () => {
+const createAddTodoButton = () => {
     const button = document.createElement('button');
+
     button.textContent = 'Add Todo';
+    
     button.setAttribute('class', 'btn-primary');
+
     button.setAttribute('data-bs-toggle', 'modal');
     button.setAttribute('data-bs-target', '#add-todo-modal');
-    contentElement.appendChild(button);
+    
+    return button;
 }
 
 // Add todo modal component
-const addTodoModal = (todolist) => {
+const createAddTodoModal = (todolist) => {
     const modalID = 'add-todo-modal';
     const modalMainDiv = document.createElement('div');
     modalMainDiv.setAttribute('class', 'modal fade');
@@ -42,7 +45,6 @@ const addTodoModal = (todolist) => {
     modalDialogDiv.appendChild(modalContentDiv);
     modalMainDiv.appendChild(modalDialogDiv);
 
-    contentElement.appendChild(modalMainDiv);
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -182,7 +184,7 @@ const addTodoModal = (todolist) => {
         return modalFooterDiv;
     }
 
-
+    return modalMainDiv;
 }
 // TODO: include form validation
 
@@ -204,4 +206,4 @@ function saveTodo(todolist) {
     todoListComponent(todolist); // this causes bugs because im just adding it over and over again
 }
 
-export { addTodoButton, addTodoModal }
+export { createAddTodoButton, createAddTodoModal }

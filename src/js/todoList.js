@@ -1,6 +1,6 @@
 // This module contains the todolist and project objects
 
-export class ToDoList {
+export class TodoList {
     constructor() {
         this.list = [];
     }
@@ -32,7 +32,7 @@ export class ToDoList {
     }
 }
 
-export class Project extends ToDoList {
+export class Project extends TodoList {
     constructor(name) {
         super();
         this._name = name;
