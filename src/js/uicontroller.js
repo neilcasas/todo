@@ -8,18 +8,24 @@ import { createAddTodoButton, createAddTodoModal } from "./addTodoModal.js";
 
 
 // View all todos within a project
-
-
 // View all projects
 // Expand a todo
 // Delete a todo
 
+
+
 export default function loadPage() {
     const contentElement = document.querySelector('#content');
-    // everytime you load the page, it creates an array of todos from localstorage, parse the json and then displays it
+
+    // Remove previous html content to 'reload' content
+    contentElement.innerHTML = ``;
+    
+    // Fetch todolist from localStorage
     const todoList = JSON.parse(localStorage.getItem('todolist')) || [];
+    
+    // Create todolist component out of localStorage todolist
     const todoListComponent = createTodoListComponent(todoList);
-    // navbar();
+
     const addTodoButton = createAddTodoButton();
     const addTodoModal = createAddTodoModal(todoList);
 

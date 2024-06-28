@@ -1,7 +1,5 @@
 import { Todo } from "./todo.js";
-import { TodoList } from "./todoList";
-import { createTodoListComponent } from "./todoListComponent.js";
-
+import loadPage from "./uicontroller.js";
 
 // Add todo button component
 const createAddTodoButton = () => {
@@ -203,7 +201,9 @@ function saveTodo(todolist) {
 
     // JSONify todolist array and place inside local storage
     localStorage.setItem('todolist', JSON.stringify(todolist));
-    todoListComponent(todolist); // this causes bugs because im just adding it over and over again
+
+    // Reload todo list content with new todo
+    loadPage();
 }
 
 export { createAddTodoButton, createAddTodoModal }
