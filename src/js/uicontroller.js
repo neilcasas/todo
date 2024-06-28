@@ -19,7 +19,7 @@ export default function loadPage() {
     // everytime you load the page, it creates an array of todos from localstorage, parse the json and then displays it
     const todoList = JSON.parse(localStorage.getItem('todolist')) || [];
     todoListComponent(todoList);
-    navbar();
+    // navbar();
     addTodoButton();
     addTodoModal(todoList);
 }

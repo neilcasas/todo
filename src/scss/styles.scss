@@ -1,5 +1,7 @@
 @import "bootstrap/scss/bootstrap";
 
+/* Global styling */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +11,18 @@ textarea {
     resize: none;
 }
 
+#navbar-text{
+    color:azure;
+}
+
+#left {
+    background-color: red;
+}
+
+#right {
+    background-color: blue;
+}
+/* Todo list styling */
 .todo {
     .todo-body {
         display: flex;

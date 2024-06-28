@@ -2,7 +2,7 @@ import { Todo } from "./todo.js";
 import { ToDoList } from "./todoList";
 import { todoListComponent } from "./todoListComponent.js";
 
-const mainElement = document.querySelector('main');
+const contentElement = document.querySelector('#content');
 
 // Add todo button component
 const addTodoButton = () => {
@@ -11,7 +11,7 @@ const addTodoButton = () => {
     button.setAttribute('class', 'btn-primary');
     button.setAttribute('data-bs-toggle', 'modal');
     button.setAttribute('data-bs-target', '#add-todo-modal');
-    mainElement.appendChild(button);
+    contentElement.appendChild(button);
 }
 
 // Add todo modal component
@@ -42,7 +42,7 @@ const addTodoModal = (todolist) => {
     modalDialogDiv.appendChild(modalContentDiv);
     modalMainDiv.appendChild(modalDialogDiv);
 
-    mainElement.appendChild(modalMainDiv);
+    contentElement.appendChild(modalMainDiv);
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
