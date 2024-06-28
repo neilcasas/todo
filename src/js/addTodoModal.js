@@ -170,6 +170,7 @@ const addTodoModal = (todolist) => {
         saveButton.classList.add('btn');
         saveButton.classList.add('btn-primary');
         saveButton.setAttribute('type', 'submit');
+        saveButton.setAttribute('data-bs-dismiss', 'modal');
         saveButton.textContent = 'Save changes';
 
         // Add saveTodo function to saveButton
