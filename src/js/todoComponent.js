@@ -17,7 +17,8 @@ export const todoComponent = (todo) => {
     return todoElement;
 }
 
-const todoModal = (todo) => { 
+// Modal that displays the contents of the todo
+export const todoModal = (todo) => { 
     const modal = document.createElement('div');
     modal.setAttribute('class', 'modal fade');
     modal.setAttribute('id',`${todo._id}-modal`);
@@ -29,11 +30,22 @@ const todoModal = (todo) => {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>${todo._description}</p>
+                    <h6>Description</h6>
+                    <p class="todo-modal-description">${todo._description}</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-auto">Due Date</div>
+                        <div class="col">${todo._dueDate}</div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-auto">Priority</div>
+                        <div class="col">${todo._priority}</div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Finished Todo</button>
+                    <button type="button" class="btn btn-danger">Delete Todo</button>
                 </div>
             </div>
         </div>
