@@ -1,5 +1,4 @@
-import { Todo } from "./todo.js";
-import loadPage from "./uicontroller.js";
+import { saveTodo } from "./storage";
 
 // Add todo button component
 const createAddTodoButton = () => {
@@ -187,25 +186,5 @@ const createAddTodoModal = (todolist) => {
 }
 // TODO: include form validation
 
-function saveTodo(todolist) {
-    // Take all values from form
-    const title = document.getElementById('todo-title').value || null;
-    const description = document.getElementById('todo-description').value || null;
-    const date = document.getElementById('todo-date').value || null;
-    const priority = document.getElementById('todo-priority').value || null;
-
-    // Create new todo object
-    let todoCounter = todolist.length || 0;
-    const newTodo = new Todo(todoCounter++, title, description, date, priority);
-
-    // Place todo object in todolist array
-    todolist.push(newTodo);
-
-    // JSONify todolist array and place inside local storage
-    localStorage.setItem('todolist', JSON.stringify(todolist));
-
-    // Reload todo list content with new todo
-    loadPage();
-}
 
 export { createAddTodoButton, createAddTodoModal }
