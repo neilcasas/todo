@@ -4,14 +4,14 @@ export const todoComponent = (todo) => {
     todoElement.classList.add('todo', 'card');
     todoElement.innerHTML = `
     <div class="todo-body card-body">
-        <div class="form-check">
+        <div class="form-check container-fluid">
             <input class="form-check-input" type="checkbox" value="" id="${todo._id}">
-            <label class="form-check-label" for="${todo._id}">${todo._title}</label>
+            <div class="container-fluid" data-bs-toggle="modal" data-bs-target="#${todo._id}-modal"
+                <label class="form-check-label" >${todo._title}</label>
+            </div>
         </div>
     </div>
     `;
-    todoElement.setAttribute('data-bs-toggle', 'modal');
-    todoElement.setAttribute('data-bs-target', `#${todo._id}-modal`)
 
     todoElement.appendChild(todoModal(todo));
     return todoElement;
