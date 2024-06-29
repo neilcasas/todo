@@ -3,11 +3,9 @@ import { saveTodo } from "./storage";
 // Add todo button component
 const createAddTodoButton = () => {
     const button = document.createElement('button');
-
-    button.textContent = '+';
+    button.id = 'add-todo-btn';
+    button.innerHTML = `<i class="bi bi-plus" id="add-todo-plus"></i>`;
     
-    button.setAttribute('class', 'btn btn-primary');
-
     button.setAttribute('data-bs-toggle', 'modal');
     button.setAttribute('data-bs-target', '#add-todo-modal');
     

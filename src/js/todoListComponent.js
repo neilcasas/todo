@@ -25,13 +25,13 @@ export const todoListContentComponent = (todolist) => {
     headerDiv.classList.add('row');
     headerDiv.innerHTML = 
     `
-    <div class="col">
+    <div class="col-auto">
         <h1>All Todos</h1>
     </div>
-        <div class="col" id="add-todo-container">
+        <div class="col-auto d-flex align-items-center" id="add-todo-container">
     </div>
     `;
-    
+
     // Create addTodoModal and button, append to div
     const addTodoButton = createAddTodoButton();
     const addTodoModal = createAddTodoModal(todolist);
