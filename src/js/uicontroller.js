@@ -1,9 +1,5 @@
 // This module contains the logic for displaying and manipulating DOM` elements
-import { TodoList, Project } from "./todoList.js";
-import { Todo } from "./todo";
-import { navbar } from './navbar.js';
-import { createTodoListComponent } from "./todoListComponent.js";
-import { createAddTodoButton, createAddTodoModal } from "./addTodoModal.js";
+import { todoListContentComponent } from "./todoListComponent.js";
 
 
 
@@ -24,14 +20,9 @@ export default function loadPage() {
     const todoList = JSON.parse(localStorage.getItem('todolist')) || [];
     
     // Create todolist component out of localStorage todolist
-    const todoListComponent = createTodoListComponent(todoList);
-
-    const addTodoButton = createAddTodoButton();
-    const addTodoModal = createAddTodoModal(todoList);
+    const todoListComponent = todoListContentComponent(todoList);
 
     contentElement.appendChild(todoListComponent);
-    contentElement.appendChild(addTodoButton);
-    contentElement.appendChild(addTodoModal);
 }
 
 // create function for loading main todopage
