@@ -15,7 +15,7 @@ export class TodoList {
     }
 
     removeTodo(todoTitle) {
-        this.list = this.list.filter(todo => todo.getTitle() !== todoTitle);
+        this.list = this.list.filter(todo => todo._title !== todoTitle);
     }
 
     getTodos() {

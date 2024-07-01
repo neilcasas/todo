@@ -1,3 +1,5 @@
+import { deleteTodo } from "./storage";
+
 // Todo component
 export const todoComponent = (todo) => {
     const todoElement = document.createElement('div');
@@ -53,10 +55,15 @@ export const todoModal = (todo) => {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Delete Todo</button>
+                    <button type="button" class="btn btn-danger" id="delete-btn" data-bs-dismiss="modal">Delete Todo</button>
                 </div>
             </div>
         </div>
     `;
+    
+    // Add event listener to delete button and allow deleting of todos
+    const deleteButton = modal.querySelector('#delete-btn');
+    deleteButton.addEventListener('click', () => deleteTodo(todo, 'todolist'));
+
     return modal;
 }
