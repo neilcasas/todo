@@ -11,8 +11,10 @@ import { getTodos } from "./storage.js";
 export default function loadPage() {
   const contentElement = document.querySelector("#content");
   const sideNavBarContainer = document.querySelector("#side-navbar");
+
   // Remove previous html content to 'reload' content
   contentElement.innerHTML = ``;
+  sideNavBarContainer.innerHTML = ``;
 
   // Fetch todolist from localStorage
   const todoList = getTodos("todolist");

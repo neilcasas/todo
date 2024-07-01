@@ -4,10 +4,13 @@ const sideNavBar = () => {
 
   // All todos view
   sideNavDiv.innerHTML = `<li class="nav-item">
-    <h3>  
+    <h4>  
         <a class="nav-link active" id="all-todos-link">View all todos</a>
-    </h3>
-   </li>`;
+    </h4>
+   </li>
+   <div id="projects-list-container">
+    <div id="add-project-header">
+   `;
 
   return sideNavDiv;
 };

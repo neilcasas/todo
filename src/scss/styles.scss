@@ -23,6 +23,26 @@ textarea {
   border: 1px solid red;
   padding: 2rem;
 }
+#add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem; /* Adjust the size as needed */
+  height: 1.3rem; /* Adjust the size as needed */
+  border-radius: 50%; /* Makes the button circular */
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Icon color */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-size: 1rem;
+  padding: 0px;
+  text-align: center;
+  margin: auto;
+}
+#add-icon {
+  margin-bottom: 0.1rem;
+}
 
 /* Todo list styling */
 .todo {
@@ -38,37 +58,16 @@ textarea {
   padding: 0;
   margin: 0;
 
-  #add-todo-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.3rem; /* Adjust the size as needed */
-    height: 1.3rem; /* Adjust the size as needed */
-    border-radius: 50%; /* Makes the button circular */
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Icon color */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    font-size: 1rem;
-    padding: 0px;
-    text-align: center;
-    margin: auto;
-  }
-  #add-todo-plus {
-    margin-bottom: 0.1rem;
-  }
-
-  #add-todo-btn:hover {
+  #add-btn:hover {
     background-color: #0056b3;
   }
 
-  #add-todo-btn:focus {
+  #add-btn:focus {
     outline: none;
     box-shadow: 0 0 5px #0056b3;
   }
 
-  #add-todo-btn:active {
+  #add-btn:active {
     background-color: #003865;
   }
 }
@@ -76,3 +75,5 @@ textarea {
   text-decoration: line-through;
   background-color: rgb(223, 223, 223);
 }
+
+/* Side navbar styles */
