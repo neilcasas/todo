@@ -11,7 +11,7 @@ function saveTodo(todolist) {
     const priority = document.getElementById('todo-priority').value || null;
 
     // Create new todo object
-    let todoCounter = todolist.length || 0;
+    let todoCounter = todolist.list.length || 0;
     const newTodo = new Todo(todoCounter++, title, description, date, priority);
 
     // Place todo object in todolist array
@@ -50,25 +50,28 @@ function getTodos(listname) {
 
     // If the list item is in localStorage
     const list = JSON.parse(storedList).list;
-    return list ? new TodoList(list) : new TodoList();
+    return list ? new TodoList(list) : new TodoList(); // make a todolist object out of the array of todos
 }
 
 // Toggle isDone for todos
 function toggleIsDoneTodo(currentTodo, listname, checkBox) {
 
     // Fetch todos
-    const list = getTodos(listname);
+    const list = getTodos(listname).list;
 
     // Toggle isDone for todo object in list
     for (let listTodo of list) {
         if (currentTodo._id == listTodo._id) {
             listTodo._isDone = checkBox.checked ? true : false;
+            break;
         }
     }
+
     // JSONify todolist array and place inside localStorage
     localStorage.setItem(`${listname}`, JSON.stringify(list));
-    // Reload page
-    loadPage();
+
+    // // Reload page
+    // loadPage();
 }
 
 export { saveTodo, deleteTodo, toggleIsDoneTodo, getTodos }

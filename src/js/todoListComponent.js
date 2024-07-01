@@ -8,7 +8,7 @@ const createTodoListComponent = (todoListObject) => {
     
     // Get list from todoListObject
     const todoList = todoListObject.list;
-    
+
     if(todoList.length > 0) {
         for (let todo of todoList) {
             let todoElement = todoComponent(todo);
