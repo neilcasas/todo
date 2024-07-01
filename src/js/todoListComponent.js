@@ -2,13 +2,24 @@ import { todoComponent } from './todoComponent.js'
 import { createAddTodoButton, createAddTodoModal } from './addTodoModal.js';
 
 // Todo list component
-const createTodoListComponent = (todoList) => {
+const createTodoListComponent = (todoListObject) => {
     const list = document.createElement('div');
     list.classList.add('todo-list');
-    for (let todo of todoList) {
-        let todoElement = todoComponent(todo);
-        list.appendChild(todoElement);
+    
+    // Get list from todoListObject
+    const todoList = todoListObject.list;
+    
+    if(todoList.length > 0) {
+        for (let todo of todoList) {
+            let todoElement = todoComponent(todo);
+            list.appendChild(todoElement);
+        }
+    } else {
+        const listEmptyDiv = document.createElement('div');
+        listEmptyDiv.textContent = 'Theres nothing here. Click on the plus button to add a Todo.'
+        list.appendChild(listEmptyDiv);
     }
+    
     return list;
 }
 
