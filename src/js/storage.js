@@ -68,10 +68,11 @@ function toggleIsDoneTodo(currentTodo, listname, checkBox) {
     }
 
     // JSONify todolist array and place inside localStorage
-    localStorage.setItem(`${listname}`, JSON.stringify(list));
+    const todoListObject = new TodoList(list); // Turn into todoListObject first
+    localStorage.setItem(`${listname}`, JSON.stringify(todoListObject));
 
-    // // Reload page
-    // loadPage();
+    // Reload page
+    loadPage();
 }
 
 export { saveTodo, deleteTodo, toggleIsDoneTodo, getTodos }
