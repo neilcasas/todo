@@ -17,7 +17,7 @@ export default function loadPage() {
     contentElement.innerHTML = ``;
     
     // Fetch todolist from localStorage
-    const todoList = getTodos();
+    const todoList = getTodos('todolist');
     
     // Create todolist component out of localStorage todolist
     const todoListComponent = todoListContentComponent(todoList);

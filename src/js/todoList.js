@@ -1,8 +1,13 @@
 // This module contains the todolist and project objects
 
 export class TodoList {
-    constructor() {
-        this.list = [];
+    constructor(list = []) {
+        if (Array.isArray(list)) {
+            this.list = list;
+        } else {
+            // Handle the case where `list` is not provided or is of different type
+            this.list = [];
+        }
     }
 
     addTodo(todo) {
@@ -33,16 +38,16 @@ export class TodoList {
 }
 
 export class Project extends TodoList {
-    constructor(name) {
-        super();
-        this._name = name;
+    constructor(name, array) {
+        super(array);
+        this.name = name;
     }
 
     getName() {
-        return this._name;
+        return this.name;
     }
 
     setName(name) {
-        this._name = name;
+        this.name = name;
     }
 }

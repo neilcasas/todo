@@ -1,5 +1,6 @@
 // This module contains the logic for storing the objects within localStorage
 import { Todo } from "./todo";
+import { TodoList } from "./todoList";
 import loadPage from "./uicontroller";
 
 function saveTodo(todolist) {
@@ -14,7 +15,7 @@ function saveTodo(todolist) {
     const newTodo = new Todo(todoCounter++, title, description, date, priority);
 
     // Place todo object in todolist array
-    todolist.push(newTodo);
+    todolist.addTodo(newTodo);
 
     // JSONify todolist array and place inside local storage
     localStorage.setItem('todolist', JSON.stringify(todolist));
@@ -23,13 +24,28 @@ function saveTodo(todolist) {
     loadPage();
 }
 
-function deleteTodo(todo) {
-    
+// Delete todo
+function deleteTodo(todo, listname) {
+
+    // Fetch todos
+    const list = getTodos(listname);
+
+    // 
+
 }
 
-// Get main todo
-function getTodos() {
-    return JSON.parse(localStorage.getItem('todolist')) || [];
+// Get the main todolist or project given their name
+function getTodos(listname) {
+    const storedList = localStorage.getItem(`${listname}`);
+    if (!storedList) {
+        // Handle the case where the item does not exist in localStorage
+        return new TodoList();
+    }
+    
+    // If the list item is in localStorage
+    const list = JSON.parse(storedList).list;
+    return list ? new TodoList(list) : new TodoList();
 }
+
 
 export { saveTodo, getTodos }
