@@ -1,28 +1,29 @@
 // This module contains the logic for displaying and manipulating DOM` elements
 import { todoListContentComponent } from "./todoListComponent.js";
-import { getTodos } from "./storage.js"; 
-
+import { sideNavBar } from "./sideNav.js";
+import { getTodos } from "./storage.js";
 
 // View all todos within a project
 // View all projects
 // Expand a todo
 // Delete a todo
 
-
-
 export default function loadPage() {
-    const contentElement = document.querySelector('#content');
+  const contentElement = document.querySelector("#content");
+  const sideNavBarContainer = document.querySelector("#side-navbar");
+  // Remove previous html content to 'reload' content
+  contentElement.innerHTML = ``;
 
-    // Remove previous html content to 'reload' content
-    contentElement.innerHTML = ``;
-    
-    // Fetch todolist from localStorage
-    const todoList = getTodos('todolist');
-    
-    // Create todolist component out of localStorage todolist
-    const todoListComponent = todoListContentComponent(todoList);
+  // Fetch todolist from localStorage
+  const todoList = getTodos("todolist");
 
-    contentElement.appendChild(todoListComponent);
+  // Create todolist component out of localStorage todolist
+  const todoListComponent = todoListContentComponent(todoList);
+
+  // Append sidenavbar
+  const sideNavBarElement = sideNavBar();
+  sideNavBarContainer.appendChild(sideNavBarElement);
+  contentElement.appendChild(todoListComponent);
 }
 
 // create function for loading main todopage

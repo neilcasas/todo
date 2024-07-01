@@ -1,77 +1,78 @@
 @import "bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
 /* Global styling */
 
 * {
-    font-family: 'Inter';
-    margin: 0;
-    padding: 0;
+  font-family: "Inter";
+  margin: 0;
+  padding: 0;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
-#navbar-text{
-    color:azure;
+#navbar-text {
+  color: azure;
 }
 
-#side-navbar, #content {
-    border: 1px solid red;
+#side-navbar,
+#content {
+  border: 1px solid red;
+  padding: 2rem;
 }
 
 /* Todo list styling */
 .todo {
-    .todo-body {
-        display: flex;
-    }
-    .todo-modal-description {
-        font-size:1.3rem;
-    }
+  .todo-body {
+    display: flex;
+  }
+  .todo-modal-description {
+    font-size: 1.3rem;
+  }
 }
 
 #add-todo-container {
-    padding:0;
-    margin:0;
+  padding: 0;
+  margin: 0;
 
-    #add-todo-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.3rem; /* Adjust the size as needed */
-        height: 1.3rem; /* Adjust the size as needed */
-        border-radius: 50%; /* Makes the button circular */
-        background-color: #007bff; /* Button background color */
-        color: #fff; /* Icon color */
-        border: none; 
-        cursor: pointer; 
-        transition: background-color 0.3s, box-shadow 0.3s; 
-        font-size: 1rem; 
-        padding: 0px; 
-        text-align: center;
-        margin:auto;
-    }
-    #add-todo-plus {
-        margin-bottom: 0.1rem;
-    }
+  #add-todo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.3rem; /* Adjust the size as needed */
+    height: 1.3rem; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes the button circular */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Icon color */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-size: 1rem;
+    padding: 0px;
+    text-align: center;
+    margin: auto;
+  }
+  #add-todo-plus {
+    margin-bottom: 0.1rem;
+  }
 
-    #add-todo-btn:hover {
-        background-color: #0056b3; 
-    }
+  #add-todo-btn:hover {
+    background-color: #0056b3;
+  }
 
-    #add-todo-btn:focus {
-        outline: none;
-        box-shadow: 0 0 5px #0056b3; 
-    }
+  #add-todo-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px #0056b3;
+  }
 
-    #add-todo-btn:active {
-        background-color: #003865; 
-    }
-
+  #add-todo-btn:active {
+    background-color: #003865;
+  }
 }
 .finished-todo {
-    text-decoration: line-through;
-    background-color: rgb(205, 205, 205);
+  text-decoration: line-through;
+  background-color: rgb(223, 223, 223);
 }

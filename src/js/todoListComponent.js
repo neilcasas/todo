@@ -17,13 +17,17 @@ const createTodoListComponent = (todoListObject) => {
         if(unfinishedList.length > 0) {
             const unfinishedListDiv = document.createElement('div');
             unfinishedListDiv.classList.add('unfinished-list');
-
+            
             for (let unfinishedTodo of unfinishedList) {
                 let unfinishedTodoComponent = todoComponent(unfinishedTodo);
                 unfinishedListDiv.appendChild(unfinishedTodoComponent);
             }
 
             list.appendChild(unfinishedListDiv);
+        } else if(unfinishedList.length == 0) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.textContent = `There's nothing here. Click on the plus button to add a todo.`;
+            list.appendChild(emptyDiv);
         }
         if(finishedList.length > 0) {
             const finishedListDiv = document.createElement('div');
@@ -46,16 +50,13 @@ const createTodoListComponent = (todoListObject) => {
         
     } else {
         const listEmptyDiv = document.createElement('div');
-        listEmptyDiv.textContent = 'Theres nothing here. Click on the plus button to add a Todo.'
+        listEmptyDiv.textContent = `There's nothing here. Click on the plus button to add a todo.`
         list.appendChild(listEmptyDiv);
     }
     
     return list;
 }
 
-/* TODO: Create a function that the DOM element that contains the todo list, 
-which adds checked todos to a "Complete" section. Optional: Add a navbar that 
-organizes the todos per timeframe*/
 
 export const todoListContentComponent = (todolist) => {
     const mainDiv = document.createElement('div');
