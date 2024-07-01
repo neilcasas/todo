@@ -1,4 +1,4 @@
-import { deleteTodo } from "./storage";
+import { deleteTodo, toggleIsDoneTodo } from "./storage";
 
 // Todo component
 export const todoComponent = (todo) => {
@@ -18,10 +18,7 @@ export const todoComponent = (todo) => {
     // Function that sets a todo from done to not done
     // Refactor to update localStorage
     const checkBox = todoElement.querySelector(`#checkbox-${todo._id}`);
-    function toggleIsDone(todo) {
-        todo._isDone = checkBox.checked ? true : false;
-    }
-    checkBox.addEventListener('click', toggleIsDone);
+    checkBox.addEventListener('clicked', () => toggleIsDoneTodo(todo, 'todolist', checkBox));
 
     todoElement.appendChild(todoModal(todo));
     return todoElement;

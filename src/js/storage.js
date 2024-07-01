@@ -31,7 +31,7 @@ function deleteTodo(todo, listname) {
     const list = getTodos(listname);
 
     // Remove todo from list
-    list.removeTodo(todo._title);
+    list.removeTodo(todo._id);
 
     // JSONify todolist array and place inside localStorage
     localStorage.setItem(`${listname}`, JSON.stringify(list));
@@ -53,5 +53,22 @@ function getTodos(listname) {
     return list ? new TodoList(list) : new TodoList();
 }
 
+// Toggle isDone for todos
+function toggleIsDoneTodo(currentTodo, listname, checkBox) {
 
-export { saveTodo, deleteTodo, getTodos }
+    // Fetch todos
+    const list = getTodos(listname);
+
+    // Toggle isDone for todo object in list
+    for (let listTodo of list) {
+        if (currentTodo._id == listTodo._id) {
+            listTodo._isDone = checkBox.checked ? true : false;
+        }
+    }
+    // JSONify todolist array and place inside localStorage
+    localStorage.setItem(`${listname}`, JSON.stringify(list));
+    // Reload page
+    loadPage();
+}
+
+export { saveTodo, deleteTodo, toggleIsDoneTodo, getTodos }

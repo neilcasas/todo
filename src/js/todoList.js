@@ -14,8 +14,8 @@ export class TodoList {
         this.list.push(todo);
     }
 
-    removeTodo(todoTitle) {
-        this.list = this.list.filter(todo => todo._title !== todoTitle);
+    removeTodo(todoId) {
+        this.list = this.list.filter(todo => todo._id !== todoId);
     }
 
     getTodos() {
