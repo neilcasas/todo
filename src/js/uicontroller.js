@@ -1,6 +1,6 @@
 // This module contains the logic for displaying and manipulating DOM` elements
 import { todoListContentComponent } from "./todoListComponent.js";
-
+import { getTodos } from "./storage.js"; 
 
 
 // View all todos within a project
@@ -17,7 +17,7 @@ export default function loadPage() {
     contentElement.innerHTML = ``;
     
     // Fetch todolist from localStorage
-    const todoList = JSON.parse(localStorage.getItem('todolist')) || [];
+    const todoList = getTodos();
     
     // Create todolist component out of localStorage todolist
     const todoListComponent = todoListContentComponent(todoList);

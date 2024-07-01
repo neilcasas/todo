@@ -23,8 +23,13 @@ function saveTodo(todolist) {
     loadPage();
 }
 
-function deleteTodo() {
+function deleteTodo(todo) {
     
 }
 
-export { saveTodo }
+// Get main todo
+function getTodos() {
+    return JSON.parse(localStorage.getItem('todolist')) || [];
+}
+
+export { saveTodo, getTodos }

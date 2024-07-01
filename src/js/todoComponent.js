@@ -5,13 +5,21 @@ export const todoComponent = (todo) => {
     todoElement.innerHTML = `
     <div class="todo-body card-body">
         <div class="form-check container-fluid">
-            <input class="form-check-input" type="checkbox" value="" id="${todo._id}">
+            <input class="form-check-input" type="checkbox" id="checkbox-${todo._id}">
             <div class="container-fluid" data-bs-toggle="modal" data-bs-target="#${todo._id}-modal"
                 <label class="form-check-label" >${todo._title}</label>
             </div>
         </div>
     </div>
     `;
+
+    // Function that sets a todo from done to not done
+    // Refactor to update localStorage
+    const checkBox = todoElement.querySelector(`#checkbox-${todo._id}`);
+    function toggleIsDone(todo) {
+        todo._isDone = checkBox.checked ? true : false;
+    }
+    checkBox.addEventListener('click', toggleIsDone);
 
     todoElement.appendChild(todoModal(todo));
     return todoElement;
