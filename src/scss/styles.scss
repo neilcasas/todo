@@ -71,4 +71,7 @@ textarea {
     }
 
 }
-
+.finished-todo {
+    text-decoration: line-through;
+    background-color: rgb(205, 205, 205);
+}

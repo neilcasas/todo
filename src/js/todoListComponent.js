@@ -9,11 +9,41 @@ const createTodoListComponent = (todoListObject) => {
     // Get list from todoListObject
     const todoList = todoListObject.list;
 
+    // Separate into finished and unfinished
+    const finishedList = todoList.filter(todo => todo._isDone);
+    const unfinishedList = todoList.filter(todo => !todo._isDone);
+
     if(todoList.length > 0) {
-        for (let todo of todoList) {
-            let todoElement = todoComponent(todo);
-            list.appendChild(todoElement);
+        if(unfinishedList.length > 0) {
+            const unfinishedListDiv = document.createElement('div');
+            unfinishedListDiv.classList.add('unfinished-list');
+
+            for (let unfinishedTodo of unfinishedList) {
+                let unfinishedTodoComponent = todoComponent(unfinishedTodo);
+                unfinishedListDiv.appendChild(unfinishedTodoComponent);
+            }
+
+            list.appendChild(unfinishedListDiv);
         }
+        if(finishedList.length > 0) {
+            const finishedListDiv = document.createElement('div');
+            finishedListDiv.classList.add('finished-list');
+
+            const finishedListHeader = document.createElement('h2');
+            finishedListHeader.textContent = 'Finished';
+
+            finishedListDiv.appendChild(finishedListHeader);
+
+            for(let finishedTodo of finishedList) {
+                let finishedTodoComponent = todoComponent(finishedTodo);
+                finishedTodoComponent.classList.add('finished-todo')
+                const checkBox = finishedTodoComponent.querySelector('input');
+                checkBox.setAttribute('checked','true');
+                finishedListDiv.appendChild(finishedTodoComponent);
+            }
+            list.appendChild(finishedListDiv);
+        }
+        
     } else {
         const listEmptyDiv = document.createElement('div');
         listEmptyDiv.textContent = 'Theres nothing here. Click on the plus button to add a Todo.'

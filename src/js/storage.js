@@ -62,7 +62,7 @@ function toggleIsDoneTodo(currentTodo, listname, checkBox) {
     // Toggle isDone for todo object in list
     for (let listTodo of list) {
         if (currentTodo._id == listTodo._id) {
-            listTodo._isDone = checkBox.checked ? true : false;
+            listTodo._isDone = !listTodo._isDone;
             break;
         }
     }

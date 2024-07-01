@@ -9,7 +9,7 @@ export const todoComponent = (todo) => {
         <div class="form-check container-fluid">
             <input class="form-check-input" type="checkbox" id="checkbox-${todo._id}">
             <div class="container-fluid" data-bs-toggle="modal" data-bs-target="#${todo._id}-modal"
-                <label class="form-check-label" >${todo._title}</label>
+                <label class="form-check-label">${todo._title}</label>
             </div>
         </div>
     </div>
