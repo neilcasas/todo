@@ -1,3 +1,5 @@
+import { saveProject } from "./storage";
+
 // Add project button component
 const addProjectButton = () => {
   const button = document.createElement("button");
@@ -35,7 +37,14 @@ const addProjectModal = () => {
             </div>
         </div>
     `;
-  // TODO: Add eventlistener to add project modal
+
+  // Save project to localStorage
+  const saveProjectButton = modal.querySelector("#save-project-btn");
+  saveProjectButton.addEventListener("click", () => {
+    const projectName = modal.querySelector("#project-title").value;
+    saveProject(projectName);
+  });
+
   return modal;
 };
 
