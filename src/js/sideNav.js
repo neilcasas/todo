@@ -1,4 +1,5 @@
 import { addProjectHeader } from "./addProjectModal";
+import loadPage from "./uicontroller";
 const sideNavBar = () => {
   const sideNavDiv = document.createElement("div");
   sideNavDiv.setAttribute("class", "nav nav-pills flex-column");
@@ -6,7 +7,7 @@ const sideNavBar = () => {
   // All todos view
   sideNavDiv.innerHTML = `<li class="nav-item">
     <h4>  
-        <a class="nav-link active" id="all-todos-link">View all todos</a>
+        <a class="nav-link" id="all-todos-link">View all todos</a>
     </h4>
    </li>
    <div id="project-list-container">
@@ -34,6 +35,10 @@ const sideNavBar = () => {
       projectLink.classList.add("nav-item");
       projectLink.innerHTML = `<a class="nav-link">${key}</a>`;
 
+      // Load the project list contents when clicking the link
+      projectLink.addEventListener("click", () => {
+        loadPage(key);
+      });
       // Append to projectList div
       projectListContainer.appendChild(projectLink);
     }
