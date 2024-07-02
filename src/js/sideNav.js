@@ -28,6 +28,7 @@ const sideNavBar = () => {
       if (key == "todolist") {
         continue;
       }
+
       // Create link element
       let projectLink = document.createElement("li");
       projectLink.classList.add("nav-item");

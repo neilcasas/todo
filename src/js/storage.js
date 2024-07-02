@@ -79,7 +79,7 @@ function toggleIsDoneTodo(currentTodo, listname, checkBox) {
   localStorage.setItem(`${listname}`, JSON.stringify(todoListObject));
 
   // Reload page
-  loadPage();
+  loadPage(listname);
 }
 
 export { saveProject, saveTodo, deleteTodo, toggleIsDoneTodo, getTodos };
