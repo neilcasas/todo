@@ -25,26 +25,30 @@ const editTodoModal = (todo, listname) => {
                       todo._description
                     }</textarea>
                     <hr>
-                    <div class="row">
-                        <div class="col-auto">Due Date</div>
-                        <input type="date" id="todo-date" class="form-control" value="${
-                          todo._dueDate
-                        }">
+                    <div class="d-flex align-items-center">
+                        <div class="col-auto me-3">Due Date</div>
+                        <div class="col-auto">
+                            <input type="date" id="todo-date" class="form-control" value="${
+                              todo._dueDate
+                            }">
+                        </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-auto">Priority</div>
-                        <select id="todo-priority" class="form-control">
-                            <option value="high"${
-                              todo._priority == "high" ? "selected" : ""
-                            }>High</option>
-                            <option value="medium" ${
-                              todo._priority == "medium" ? "selected" : ""
-                            }>Medium</option>
-                            <option value="low" ${
-                              todo._priority == "low" ? "selected" : ""
-                            }>Low</option>
-                        </select>
+                    <div class="d-flex align-items-center">
+                        <div class="col-auto me-3">Priority</div>
+                        <div class="col-auto">
+                            <select id="todo-priority" class="form-control">
+                                <option value="high"${
+                                  todo._priority == "high" ? "selected" : ""
+                                }>High</option>
+                                <option value="medium" ${
+                                  todo._priority == "medium" ? "selected" : ""
+                                }>Medium</option>
+                                <option value="low" ${
+                                  todo._priority == "low" ? "selected" : ""
+                                }>Low</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
