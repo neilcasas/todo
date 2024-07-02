@@ -38,8 +38,9 @@ export class TodoList {
 }
 
 export class Project extends TodoList {
-  constructor(name, list = []) {
+  constructor(name, id, list = []) {
     super(list);
+    this.id = id;
     this.name = name;
   }
 

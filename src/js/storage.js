@@ -4,8 +4,13 @@ import { TodoList, Project } from "./todoList";
 import loadPage from "./uicontroller";
 
 function saveProject(projectName) {
+  // Get id for projectObject
+  const lists = Object.keys(localStorage) || [];
+  const projects = lists.filter((key) => key !== "todolist");
+  let projectCount = projects.length;
+
   // Create projectObject
-  const projectObject = new Project(projectName);
+  const projectObject = new Project(projectName, projectCount++ || 0);
 
   // Save project object to localStorage
   localStorage.setItem(`${projectName}`, JSON.stringify(projectObject));
