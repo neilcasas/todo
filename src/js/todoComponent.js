@@ -1,4 +1,4 @@
-import { deleteTodo, toggleIsDoneTodo } from "./storage";
+import { deleteTodo, toggleIsDoneTodo, updateTodo } from "./storage";
 
 const editTodoModal = (todo, listname) => {
   const modal = document.createElement("div");
@@ -53,11 +53,14 @@ const editTodoModal = (todo, listname) => {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="save-btn" data-bs-dismiss="modal">Save Changes</button>
+                    <button type="button" class="btn btn-primary" id="update-todo-btn" data-bs-dismiss="modal">Save Changes</button>
                 </div>
             </div>
         </div>
     `;
+  // Update todo upon clicking update button
+  const updateButton = modal.querySelector("#update-todo-btn");
+  updateButton.addEventListener("click", () => updateTodo(todo, listname));
   return modal;
 };
 
