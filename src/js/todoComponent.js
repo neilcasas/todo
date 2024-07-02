@@ -1,6 +1,62 @@
 import { deleteTodo, toggleIsDoneTodo } from "./storage";
 
-// Todo component
+const editTodoModal = (todo, listname) => {
+  const modal = document.createElement("div");
+  modal.setAttribute("class", "modal fade");
+  modal.setAttribute("id", `${todo._id}-edit-modal`);
+  modal.innerHTML = `
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="modal-title">
+                                <input type="text" id="todo-title" value="${
+                                  todo._title
+                                }" class="form-control">
+                            </h2>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Description</h6>
+                    <textarea id="todo-description" class="form-control">${
+                      todo._description
+                    }</textarea>
+                    <hr>
+                    <div class="row">
+                        <div class="col-auto">Due Date</div>
+                        <input type="date" id="todo-date" class="form-control" value="${
+                          todo._dueDate
+                        }">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-auto">Priority</div>
+                        <select id="todo-priority" class="form-control">
+                            <option value="high"${
+                              todo._priority == "high" ? "selected" : ""
+                            }>High</option>
+                            <option value="medium" ${
+                              todo._priority == "medium" ? "selected" : ""
+                            }>Medium</option>
+                            <option value="low" ${
+                              todo._priority == "low" ? "selected" : ""
+                            }>Low</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save-btn" data-bs-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    `;
+  return modal;
+};
+
 export const todoComponent = (todo, listname) => {
   const todoElement = document.createElement("div");
   todoElement.classList.add("todo", "card");
@@ -22,18 +78,16 @@ export const todoComponent = (todo, listname) => {
     </div>
     `;
 
-  // Function that sets a todo from done to not done
-  // Refactor to update localStorage
   const checkBox = todoElement.querySelector(`#checkbox-${todo._id}`);
   checkBox.addEventListener("click", () =>
     toggleIsDoneTodo(todo, listname, checkBox)
   );
 
   todoElement.appendChild(todoModal(todo, listname));
+  todoElement.appendChild(editTodoModal(todo, listname));
   return todoElement;
 };
 
-// Modal that displays the contents of the todo
 export const todoModal = (todo, listname) => {
   const modal = document.createElement("div");
   modal.setAttribute("class", "modal fade");
@@ -42,7 +96,14 @@ export const todoModal = (todo, listname) => {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">${todo._title}</h1>
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="modal-title">${todo._title}</h2>
+                        </div>
+                        <div class="col-auto d-flex align-items-center text-end">
+                            <i class="bi bi-pencil" data-bs-toggle="modal" data-bs-target="#${todo._id}-edit-modal"></i>
+                        </div>
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -67,7 +128,6 @@ export const todoModal = (todo, listname) => {
         </div>
     `;
 
-  // Add event listener to delete button and allow deleting of todos
   const deleteButton = modal.querySelector("#delete-btn");
   deleteButton.addEventListener("click", () => deleteTodo(todo, listname));
 
