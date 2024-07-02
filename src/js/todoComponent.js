@@ -8,8 +8,15 @@ export const todoComponent = (todo, listname) => {
     <div class="todo-body card-body">
         <div class="form-check container-fluid">
             <input class="form-check-input" type="checkbox" id="checkbox-${todo._id}">
-            <div class="container-fluid" data-bs-toggle="modal" data-bs-target="#${todo._id}-modal"
-                <label class="form-check-label">${todo._title}</label>
+            <div class="container-fluid" data-bs-toggle="modal" data-bs-target="#${todo._id}-modal">
+                <div class="row">
+                    <div class="col">
+                        <label class="form-check-label">${todo._title}</label>
+                    </div>
+                    <div class="col text-end" id="todo-component-date">
+                        ${todo._dueDate}<span class="priority-indicator ${todo._priority}">!</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -66,6 +66,19 @@ textarea {
   .todo-modal-description {
     font-size: 1.3rem;
   }
+  .priority-indicator {
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+  .high {
+    color: red;
+  }
+  .medium {
+    color: orange;
+  }
+  .low {
+    color: green;
+  }
 }
 
 #add-todo-container {

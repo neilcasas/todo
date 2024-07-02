@@ -43,10 +43,16 @@ const createTodoListComponent = (todoListObject, listname) => {
 
       for (let finishedTodo of finishedList) {
         let finishedTodoComponent = todoComponent(finishedTodo, listname);
-        finishedTodoComponent.classList.add("finished-todo");
+
+        // Add strike through to todo text
+        finishedTodoComponent
+          .querySelector("label")
+          .classList.add("finished-todo");
         finishedTodoComponent.classList.add("mb-2");
+
         const checkBox = finishedTodoComponent.querySelector("input");
         checkBox.setAttribute("checked", "true");
+
         finishedListDiv.appendChild(finishedTodoComponent);
       }
       list.appendChild(finishedListDiv);
