@@ -20,6 +20,7 @@ const createTodoListComponent = (todoListObject, listname) => {
 
       for (let unfinishedTodo of unfinishedList) {
         let unfinishedTodoComponent = todoComponent(unfinishedTodo, listname);
+        unfinishedTodoComponent.classList.add("mb-2");
         unfinishedListDiv.appendChild(unfinishedTodoComponent);
       }
 
@@ -41,6 +42,7 @@ const createTodoListComponent = (todoListObject, listname) => {
       for (let finishedTodo of finishedList) {
         let finishedTodoComponent = todoComponent(finishedTodo, listname);
         finishedTodoComponent.classList.add("finished-todo");
+        finishedTodoComponent.classList.add("mb-2");
         const checkBox = finishedTodoComponent.querySelector("input");
         checkBox.setAttribute("checked", "true");
         finishedListDiv.appendChild(finishedTodoComponent);
