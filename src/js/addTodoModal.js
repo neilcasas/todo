@@ -13,7 +13,7 @@ const createAddTodoButton = () => {
 };
 
 // Add todo modal component
-const createAddTodoModal = (todolist) => {
+const createAddTodoModal = (todolist, listname) => {
   const modalID = "add-todo-modal";
   const modalMainDiv = document.createElement("div");
   modalMainDiv.setAttribute("class", "modal fade");
@@ -173,7 +173,7 @@ const createAddTodoModal = (todolist) => {
     saveButton.textContent = "Save changes";
 
     // Add saveTodo function to saveButton
-    saveButton.addEventListener("click", () => saveTodo(todolist));
+    saveButton.addEventListener("click", () => saveTodo(todolist, listname));
 
     modalFooterDiv.appendChild(closeButton);
     modalFooterDiv.appendChild(saveButton);

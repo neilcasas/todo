@@ -11,7 +11,8 @@ function saveProject(projectName) {
   localStorage.setItem(`${projectName}`, JSON.stringify(projectObject));
 }
 
-function saveTodo(todolist) {
+// Save todo to localStorage given listname, load page given list name
+function saveTodo(todolist, listname) {
   // Take all values from form
   const title = document.getElementById("todo-title").value || null;
   const description = document.getElementById("todo-description").value || null;
@@ -26,10 +27,10 @@ function saveTodo(todolist) {
   todolist.addTodo(newTodo);
 
   // JSONify todolist array and place inside localStorage
-  localStorage.setItem("todolist", JSON.stringify(todolist));
+  localStorage.setItem(listname, JSON.stringify(todolist));
 
   // Reload todo list content with new todo
-  loadPage();
+  loadPage(listname);
 }
 
 // Delete todo

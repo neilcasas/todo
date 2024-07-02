@@ -1,10 +1,10 @@
 import { deleteTodo, toggleIsDoneTodo } from "./storage";
 
 // Todo component
-export const todoComponent = (todo) => {
-    const todoElement = document.createElement('div');
-    todoElement.classList.add('todo', 'card');
-    todoElement.innerHTML = `
+export const todoComponent = (todo, listname) => {
+  const todoElement = document.createElement("div");
+  todoElement.classList.add("todo", "card");
+  todoElement.innerHTML = `
     <div class="todo-body card-body">
         <div class="form-check container-fluid">
             <input class="form-check-input" type="checkbox" id="checkbox-${todo._id}">
@@ -15,21 +15,23 @@ export const todoComponent = (todo) => {
     </div>
     `;
 
-    // Function that sets a todo from done to not done
-    // Refactor to update localStorage
-    const checkBox = todoElement.querySelector(`#checkbox-${todo._id}`);
-    checkBox.addEventListener('click', () => toggleIsDoneTodo(todo, 'todolist', checkBox));
+  // Function that sets a todo from done to not done
+  // Refactor to update localStorage
+  const checkBox = todoElement.querySelector(`#checkbox-${todo._id}`);
+  checkBox.addEventListener("click", () =>
+    toggleIsDoneTodo(todo, listname, checkBox)
+  );
 
-    todoElement.appendChild(todoModal(todo));
-    return todoElement;
-}
+  todoElement.appendChild(todoModal(todo));
+  return todoElement;
+};
 
 // Modal that displays the contents of the todo
-export const todoModal = (todo) => { 
-    const modal = document.createElement('div');
-    modal.setAttribute('class', 'modal fade');
-    modal.setAttribute('id',`${todo._id}-modal`);
-    modal.innerHTML = `
+export const todoModal = (todo) => {
+  const modal = document.createElement("div");
+  modal.setAttribute("class", "modal fade");
+  modal.setAttribute("id", `${todo._id}-modal`);
+  modal.innerHTML = `
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -57,10 +59,10 @@ export const todoModal = (todo) => {
             </div>
         </div>
     `;
-    
-    // Add event listener to delete button and allow deleting of todos
-    const deleteButton = modal.querySelector('#delete-btn');
-    deleteButton.addEventListener('click', () => deleteTodo(todo, 'todolist'));
 
-    return modal;
-}
+  // Add event listener to delete button and allow deleting of todos
+  const deleteButton = modal.querySelector("#delete-btn");
+  deleteButton.addEventListener("click", () => deleteTodo(todo, "todolist"));
+
+  return modal;
+};

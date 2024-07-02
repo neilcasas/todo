@@ -8,7 +8,8 @@ import { getTodos } from "./storage.js";
 // Expand a todo
 // Delete a todo
 
-export default function loadPage() {
+// Load page depending on which list to be loaded
+export default function loadPage(listname) {
   const contentElement = document.querySelector("#content");
   const sideNavBarContainer = document.querySelector("#side-navbar");
 
@@ -17,10 +18,10 @@ export default function loadPage() {
   sideNavBarContainer.innerHTML = ``;
 
   // Fetch todolist from localStorage
-  const todoList = getTodos("todolist");
+  const todoList = getTodos(listname);
 
   // Create todolist component out of localStorage todolist
-  const todoListComponent = todoListContentComponent(todoList);
+  const todoListComponent = todoListContentComponent(todoList, listname);
 
   // Append sidenavbar
   const sideNavBarElement = sideNavBar();
