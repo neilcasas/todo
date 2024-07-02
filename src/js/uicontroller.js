@@ -28,9 +28,3 @@ export default function loadPage(listname) {
   sideNavBarContainer.appendChild(sideNavBarElement);
   contentElement.appendChild(todoListComponent);
 }
-
-// create function for loading main todopage
-// create function for loading all projects view page
-// create function for loading displaying a project's todos
-
-// there could be a template, a part of the page that remains static, and then a content div that is dynamic

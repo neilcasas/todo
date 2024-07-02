@@ -6,14 +6,18 @@ const sideNavBar = () => {
 
   // All todos view
   sideNavDiv.innerHTML = `<li class="nav-item">
-    <h4>  
+    <h5>  
         <a class="nav-link" id="all-todos-link">View all todos</a>
-    </h4>
+    </h5>
    </li>
    <div id="project-list-container">
     <div id="add-project-header-container">
    `;
-
+  // Load all todos when clicking all todos link
+  const allTodosLink = sideNavDiv.querySelector("#all-todos-link");
+  allTodosLink.addEventListener("click", () => {
+    loadPage("todolist");
+  });
   const addProjectHeaderContainer = sideNavDiv.querySelector(
     "#add-project-header-container"
   );

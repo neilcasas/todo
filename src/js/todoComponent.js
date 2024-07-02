@@ -22,12 +22,12 @@ export const todoComponent = (todo, listname) => {
     toggleIsDoneTodo(todo, listname, checkBox)
   );
 
-  todoElement.appendChild(todoModal(todo));
+  todoElement.appendChild(todoModal(todo, listname));
   return todoElement;
 };
 
 // Modal that displays the contents of the todo
-export const todoModal = (todo) => {
+export const todoModal = (todo, listname) => {
   const modal = document.createElement("div");
   modal.setAttribute("class", "modal fade");
   modal.setAttribute("id", `${todo._id}-modal`);
@@ -62,7 +62,7 @@ export const todoModal = (todo) => {
 
   // Add event listener to delete button and allow deleting of todos
   const deleteButton = modal.querySelector("#delete-btn");
-  deleteButton.addEventListener("click", () => deleteTodo(todo, "todolist"));
+  deleteButton.addEventListener("click", () => deleteTodo(todo, listname));
 
   return modal;
 };

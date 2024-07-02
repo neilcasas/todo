@@ -9,6 +9,9 @@ function saveProject(projectName) {
 
   // Save project object to localStorage
   localStorage.setItem(`${projectName}`, JSON.stringify(projectObject));
+
+  // Reload page with new project
+  loadPage(projectName);
 }
 
 // Save todo to localStorage given listname, load page given list name
@@ -42,10 +45,10 @@ function deleteTodo(todo, listname) {
   list.removeTodo(todo._id);
 
   // JSONify todolist array and place inside localStorage
-  localStorage.setItem(`${listname}`, JSON.stringify(list));
+  localStorage.setItem(listname, JSON.stringify(list));
 
   // For now, load the main todos, but this should be refactored to accommodate project objects
-  loadPage();
+  loadPage(listname);
 }
 
 // Get the main todolist or project given their name, returns a todoList object
