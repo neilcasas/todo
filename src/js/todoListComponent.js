@@ -33,6 +33,7 @@ const createTodoListComponent = (todoListObject, listname) => {
     if (finishedList.length > 0) {
       const finishedListDiv = document.createElement("div");
       finishedListDiv.classList.add("finished-list");
+      finishedListDiv.classList.add("mt-5");
 
       const finishedListHeader = document.createElement("h2");
       finishedListHeader.textContent = "Finished";
