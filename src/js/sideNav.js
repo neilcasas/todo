@@ -9,7 +9,7 @@ const sideNavBar = () => {
         <a class="nav-link active" id="all-todos-link">View all todos</a>
     </h4>
    </li>
-   <div id="projects-list-container">
+   <div id="project-list-container">
     <div id="add-project-header-container">
    `;
 
@@ -18,6 +18,27 @@ const sideNavBar = () => {
   );
   const addProjectHeaderElement = addProjectHeader();
   addProjectHeaderContainer.appendChild(addProjectHeaderElement);
+
+  // Iterate through localStorage to get projects, append to projectList container
+  const projectList = () => {
+    const projectListContainer = sideNavDiv.querySelector(
+      "#project-list-container"
+    );
+    for (let key of Object.keys(localStorage)) {
+      if (key == "todolist") {
+        continue;
+      }
+      // Create link element
+      let projectLink = document.createElement("li");
+      projectLink.classList.add("nav-item");
+      projectLink.innerHTML = `<a class="nav-link">${key}</a>`;
+
+      // Append to projectList div
+      projectListContainer.appendChild(projectLink);
+    }
+  };
+
+  projectList();
   return sideNavDiv;
 };
 
