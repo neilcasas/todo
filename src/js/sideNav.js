@@ -37,12 +37,22 @@ const sideNavBar = () => {
       // Create link element
       let projectLink = document.createElement("li");
       projectLink.classList.add("nav-item");
-      projectLink.innerHTML = `<a class="nav-link">${key}</a>`;
+      projectLink.innerHTML = `
+      <div class="d-flex align-items-center">
+        <div class="col">
+          <a class="nav-link">${key}</a>
+        </div>
+        <div class="col-auto">
+          <i class="bi bi-trash ms-2 text-danger"></i>
+        </div>
+      </div>
+      `;
 
       // Load the project list contents when clicking the link
       projectLink.addEventListener("click", () => {
         loadPage(key);
       });
+
       // Append to projectList div
       projectListContainer.appendChild(projectLink);
     }

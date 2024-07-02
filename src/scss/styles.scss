@@ -20,7 +20,6 @@ textarea {
 
 #side-navbar,
 #content {
-  border: 1px solid red;
   padding: 2rem;
 }
 #add-btn {
@@ -39,12 +38,6 @@ textarea {
   padding: 0px;
   text-align: center;
   margin: auto;
-}
-
-#add-project-header-container {
-  #add-btn {
-    margin-left: 0.5rem;
-  }
 }
 
 #add-icon {
@@ -83,3 +76,11 @@ textarea {
 }
 
 /* Side navbar styles */
+.bi-trash {
+  margin-left: 1rem;
+}
+#add-project-header-container {
+  #add-btn {
+    margin-left: 0.5rem;
+  }
+}
