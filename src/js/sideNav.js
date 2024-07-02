@@ -31,15 +31,20 @@ const sideNavBar = () => {
     const projectListContainer = sideNavDiv.querySelector(
       "#project-list-container"
     );
-    for (let key of Object.keys(localStorage)) {
-      if (key == "todolist") {
-        continue;
-      }
 
-      // Create link element
-      let projectLink = document.createElement("li");
-      projectLink.classList.add("nav-item");
-      projectLink.innerHTML = `
+    const projects = Object.keys(localStorage).filter(
+      (key) => key !== "todolist"
+    );
+    if (projects.length > 0) {
+      for (let key of projects) {
+        if (key == "todolist") {
+          continue;
+        }
+
+        // Create link element
+        let projectLink = document.createElement("li");
+        projectLink.classList.add("nav-item");
+        projectLink.innerHTML = `
       <div class="d-flex align-items-center">
         <div class="col">
           <a class="nav-link">${key}</a>
@@ -50,19 +55,26 @@ const sideNavBar = () => {
       </div>
       `;
 
-      // Load the project list contents when clicking the link
-      projectLink.querySelector("a").addEventListener("click", () => {
-        loadPage(key);
-      });
+        // Load the project list contents when clicking the link
+        projectLink.querySelector("a").addEventListener("click", () => {
+          loadPage(key);
+        });
 
-      // Allow deleting of objects
-      projectLink.querySelector("i").addEventListener("click", () => {
-        deleteProject(key);
-        loadPage("todolist");
-      });
+        // Allow deleting of objects
+        projectLink.querySelector("i").addEventListener("click", () => {
+          deleteProject(key);
+          loadPage("todolist");
+        });
 
-      // Append to projectList div
-      projectListContainer.appendChild(projectLink);
+        // Append to projectList div
+        projectListContainer.appendChild(projectLink);
+      }
+    } else {
+      // Show a message if no projects have been added yet
+      const emptyDiv = document.createElement("div");
+      emptyDiv.textContent = "No projects yet.";
+      emptyDiv.classList.add("empty-message-div");
+      projectListContainer.appendChild(emptyDiv);
     }
   };
 

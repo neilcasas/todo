@@ -28,6 +28,7 @@ const createTodoListComponent = (todoListObject, listname) => {
     } else if (unfinishedList.length == 0) {
       const emptyDiv = document.createElement("div");
       emptyDiv.textContent = `There's nothing here. Click on the plus button to add a todo.`;
+      emptyDiv.classList.add("empty-message-div");
       list.appendChild(emptyDiv);
     }
     if (finishedList.length > 0) {
@@ -51,9 +52,10 @@ const createTodoListComponent = (todoListObject, listname) => {
       list.appendChild(finishedListDiv);
     }
   } else {
-    const listEmptyDiv = document.createElement("div");
-    listEmptyDiv.textContent = `There's nothing here. Click on the plus button to add a todo.`;
-    list.appendChild(listEmptyDiv);
+    const emptyDiv = document.createElement("div");
+    emptyDiv.textContent = `There's nothing here. Click on the plus button to add a todo.`;
+    emptyDiv.classList.add("empty-message-div");
+    list.appendChild(emptyDiv);
   }
 
   return list;

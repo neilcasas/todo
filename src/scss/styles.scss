@@ -55,7 +55,9 @@ textarea {
 #add-btn:active {
   background-color: #003865;
 }
-
+.empty-message-div {
+  color: gray;
+}
 /* Todo list styling */
 .todo {
   .todo-body {
@@ -72,7 +74,6 @@ textarea {
 }
 .finished-todo {
   text-decoration: line-through;
-  background-color: rgb(223, 223, 223);
 }
 
 /* Side navbar styles */
