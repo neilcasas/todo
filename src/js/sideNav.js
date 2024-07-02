@@ -1,3 +1,4 @@
+import { addProjectHeader } from "./addProjectModal";
 const sideNavBar = () => {
   const sideNavDiv = document.createElement("div");
   sideNavDiv.setAttribute("class", "nav nav-pills flex-column");
@@ -9,9 +10,14 @@ const sideNavBar = () => {
     </h4>
    </li>
    <div id="projects-list-container">
-    <div id="add-project-header">
+    <div id="add-project-header-container">
    `;
 
+  const addProjectHeaderContainer = sideNavDiv.querySelector(
+    "#add-project-header-container"
+  );
+  const addProjectHeaderElement = addProjectHeader();
+  addProjectHeaderContainer.appendChild(addProjectHeaderElement);
   return sideNavDiv;
 };
 

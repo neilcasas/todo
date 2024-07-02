@@ -40,8 +40,27 @@ textarea {
   text-align: center;
   margin: auto;
 }
+
+#add-project-header-container {
+  #add-btn {
+    margin-left: 0.5rem;
+  }
+}
+
 #add-icon {
   margin-bottom: 0.1rem;
+}
+#add-btn:hover {
+  background-color: #0056b3;
+}
+
+#add-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px #0056b3;
+}
+
+#add-btn:active {
+  background-color: #003865;
 }
 
 /* Todo list styling */
@@ -57,19 +76,6 @@ textarea {
 #add-todo-container {
   padding: 0;
   margin: 0;
-
-  #add-btn:hover {
-    background-color: #0056b3;
-  }
-
-  #add-btn:focus {
-    outline: none;
-    box-shadow: 0 0 5px #0056b3;
-  }
-
-  #add-btn:active {
-    background-color: #003865;
-  }
 }
 .finished-todo {
   text-decoration: line-through;

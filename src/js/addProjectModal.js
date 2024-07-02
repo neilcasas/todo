@@ -42,16 +42,18 @@ const addProjectModal = () => {
 // Create add project header
 const addProjectHeader = () => {
   const headerDiv = document.createElement("div");
-  headerDiv.classList.add("row");
+  headerDiv.setAttribute("class", "col-auto d-flex align-items-center");
 
   const headerText = document.createElement("h2");
   headerText.textContent = "Projects";
   headerDiv.appendChild(headerText);
 
-  const addButton = addProjectButton();
+  const addButtonDiv = document.createElement("div");
+  addButtonDiv.classList.add("col-auto");
+  addButtonDiv.appendChild(addProjectButton());
   const modal = addProjectModal();
 
-  headerDiv.appendChild(addButton);
+  headerDiv.appendChild(addButtonDiv);
   headerDiv.appendChild(modal);
 
   return headerDiv;
