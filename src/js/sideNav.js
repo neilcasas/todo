@@ -1,5 +1,7 @@
 import { addProjectHeader } from "./addProjectModal";
 import loadPage from "./uicontroller";
+import { deleteProject } from "./storage";
+
 const sideNavBar = () => {
   const sideNavDiv = document.createElement("div");
   sideNavDiv.setAttribute("class", "nav nav-pills flex-column");
@@ -49,8 +51,14 @@ const sideNavBar = () => {
       `;
 
       // Load the project list contents when clicking the link
-      projectLink.addEventListener("click", () => {
+      projectLink.querySelector("a").addEventListener("click", () => {
         loadPage(key);
+      });
+
+      // Allow deleting of objects
+      projectLink.querySelector("i").addEventListener("click", () => {
+        deleteProject(key);
+        loadPage("todolist");
       });
 
       // Append to projectList div

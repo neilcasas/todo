@@ -18,7 +18,13 @@ function saveProject(projectName) {
   // Reload page with new project
   loadPage(projectName);
 }
+function deleteProject(projectName) {
+  // Delete item from localStorage
+  localStorage.removeItem(projectName);
 
+  // Reload page
+  loadPage("todolist");
+}
 // Save todo to localStorage given listname, load page given list name
 function saveTodo(todolist, listname) {
   // Take all values from form
@@ -52,7 +58,6 @@ function deleteTodo(todo, listname) {
   // JSONify todolist array and place inside localStorage
   localStorage.setItem(listname, JSON.stringify(list));
 
-  // For now, load the main todos, but this should be refactored to accommodate project objects
   loadPage(listname);
 }
 
@@ -90,4 +95,11 @@ function toggleIsDoneTodo(currentTodo, listname, checkBox) {
   loadPage(listname);
 }
 
-export { saveProject, saveTodo, deleteTodo, toggleIsDoneTodo, getTodos };
+export {
+  saveProject,
+  deleteProject,
+  saveTodo,
+  deleteTodo,
+  toggleIsDoneTodo,
+  getTodos,
+};
