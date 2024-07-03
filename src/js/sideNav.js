@@ -3,11 +3,11 @@ import loadPage from "./uicontroller";
 import { deleteProject } from "./storage";
 
 const sideNavBar = () => {
-  const sideNavDiv = document.createElement("div");
-  sideNavDiv.setAttribute("class", "nav nav-pills flex-column");
+  const mainDiv = document.createElement("div");
+  mainDiv.setAttribute("class", "nav nav-pills flex-column");
 
   // All todos view
-  sideNavDiv.innerHTML = `<li class="nav-item">
+  mainDiv.innerHTML = `<li class="nav-item">
     <h5>  
         <a class="nav-link" id="all-todos-link">View all todos</a>
     </h5>
@@ -16,11 +16,11 @@ const sideNavBar = () => {
     <div id="add-project-header-container">
    `;
   // Load all todos when clicking all todos link
-  const allTodosLink = sideNavDiv.querySelector("#all-todos-link");
+  const allTodosLink = mainDiv.querySelector("#all-todos-link");
   allTodosLink.addEventListener("click", () => {
     loadPage("todolist");
   });
-  const addProjectHeaderContainer = sideNavDiv.querySelector(
+  const addProjectHeaderContainer = mainDiv.querySelector(
     "#add-project-header-container"
   );
   const addProjectHeaderElement = addProjectHeader();
@@ -28,7 +28,7 @@ const sideNavBar = () => {
 
   // Iterate through localStorage to get projects, append to projectList container
   const projectList = () => {
-    const projectListContainer = sideNavDiv.querySelector(
+    const projectListContainer = mainDiv.querySelector(
       "#project-list-container"
     );
 
@@ -79,7 +79,7 @@ const sideNavBar = () => {
   };
 
   projectList();
-  return sideNavDiv;
+  return mainDiv;
 };
 
 export { sideNavBar };
