@@ -11,7 +11,7 @@ const editTodoModal = (todo, listname) => {
                     <div class="row">
                         <div class="col">
                             <h2 class="modal-title">
-                                <input type="text" id="todo-title" value="${
+                                <input type="text" id="new-title" value="${
                                   todo._title
                                 }" class="form-control">
                             </h2>
@@ -21,14 +21,14 @@ const editTodoModal = (todo, listname) => {
                 </div>
                 <div class="modal-body">
                     <h6>Description</h6>
-                    <textarea id="todo-description" class="form-control">${
+                    <textarea id="new-description" class="form-control">${
                       todo._description
                     }</textarea>
                     <hr>
                     <div class="d-flex align-items-center">
                         <div class="col-auto me-3">Due Date</div>
                         <div class="col-auto">
-                            <input type="date" id="todo-date" class="form-control" value="${
+                            <input type="date" id="new-date" class="form-control" value="${
                               todo._dueDate
                             }">
                         </div>
@@ -37,7 +37,7 @@ const editTodoModal = (todo, listname) => {
                     <div class="d-flex align-items-center">
                         <div class="col-auto me-3">Priority</div>
                         <div class="col-auto">
-                            <select id="todo-priority" class="form-control">
+                            <select id="new-priority" class="form-control">
                                 <option value="high"${
                                   todo._priority == "high" ? "selected" : ""
                                 }>High</option>

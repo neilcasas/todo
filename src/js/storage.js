@@ -50,22 +50,27 @@ function saveTodo(todolist, listname) {
 // Update todo
 function updateTodo(todo, listname) {
   // Update todo with new details
-  todo._title = document.getElementById("todo-title").value || null;
-  todo._description = document.getElementById("todo-description").value || null;
-  todo._date = document.getElementById("todo-date").value || null;
-  todo._priority = document.getElementById("todo-priority").value || null;
+  todo._title = document.getElementById("new-title").value || null;
+  todo._description = document.getElementById("new-description").value || null;
+  todo._date = document.getElementById("new-date").value || null;
+  todo._priority = document.getElementById("new-priority").value || null;
 
   // Fetch list from localStorage
   let listObject = getTodos(listname);
 
   // Delete old todo
-  listObject.list.filter((listTodo) => listTodo._id !== todo._id);
+  listObject.list = listObject.list.filter(
+    (listTodo) => listTodo._id !== todo._id
+  );
 
   // Append updated todo
   listObject.addTodo(todo);
 
   // Save new list object to JSON
   localStorage.setItem(listname, JSON.stringify(listObject));
+
+  // Reload page with updated todolist
+  loadPage(listname);
 }
 
 // Delete todo
