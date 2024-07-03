@@ -14,13 +14,28 @@ textarea {
   resize: none;
 }
 
+/* Navbar styling */
 #navbar-text {
   color: azure;
+}
+
+#sidenavbar-toggler {
+  font-size: 2rem;
+  color: azure;
+  margin-bottom: 10px;
+  margin-right: 2rem;
+  margin-left: 1rem;
+  padding: 0;
 }
 
 #side-navbar,
 #content {
   padding: 2rem;
+  border: 1px solid red;
+}
+
+.hide-nav {
+  display: none;
 }
 #add-btn {
   display: flex;
