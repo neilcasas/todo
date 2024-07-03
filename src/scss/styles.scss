@@ -26,6 +26,20 @@ textarea {
   margin-right: 2rem;
   margin-left: 1rem;
   padding: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#sidenavbar-toggler:hover {
+  color: white;
+}
+
+#sidenavbar-toggler:active {
+  color: rgb(109, 163, 229);
+}
+
+#all-todos-link {
+  cursor: pointer;
 }
 
 #side-navbar,
